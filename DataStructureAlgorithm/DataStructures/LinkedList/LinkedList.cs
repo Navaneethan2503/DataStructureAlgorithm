@@ -148,6 +148,34 @@ namespace LinkedList{
             return -1;
         }
 
+        public void insertsorted(int e)
+        {
+            Node newest = new Node(e);
+            if (isEmpty())
+                Head = newest;
+            else
+            {
+                Node p = Head;
+                Node q = Head;
+                while (p != null && p.Data < e)
+                {
+                    q = p;
+                    p = p.next;
+                }
+                if (p == Head)
+                {
+                    newest.next = Head;
+                    Head = newest;
+                }
+                else
+                {
+                    newest.next = q.next;
+                    q.next = newest;
+                }
+            }
+            Size++;
+        }
+
         public static void Main(){
             LinkedList l = new LinkedList();
             l.addElementAtLast(1);
